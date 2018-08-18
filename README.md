@@ -1,4 +1,4 @@
-# simple
+# chat
 
 > A Vue.js project
 

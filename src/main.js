@@ -2,41 +2,20 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
-import {
-  Vuetify,
-  VApp,
-  VNavigationDrawer,
-  VFooter,
-  VList,
-  VBtn,
-  VIcon,
-  VGrid,
-  VToolbar,
-  transitions
-} from 'vuetify'
-import '../node_modules/vuetify/src/stylus/app.styl'
+import store from './store/index'
+import router from './router/index'
+import SuiVue from 'semantic-ui-vue'
+import 'semantic-ui-css/semantic.min.css'
 
-Vue.use(Vuetify, {
-  components: {
-    VApp,
-    VNavigationDrawer,
-    VFooter,
-    VList,
-    VBtn,
-    VIcon,
-    VGrid,
-    VToolbar,
-    transitions
-  }
-})
-
+Vue.use(SuiVue)
 Vue.config.productionTip = false
+Vue.config.devtools = true
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
