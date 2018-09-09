@@ -1,6 +1,6 @@
-# chat
+# vue-store
 
-> A Vue.js project
+> Template Market-place Project
 
 ## Build Setup
 
