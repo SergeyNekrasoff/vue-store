@@ -1,13 +1,17 @@
 <template>
   <div>
-    Привет
+    <Product />
   </div>
 </template>
 
 <script>
+import Product from '@/components/Product'
 
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Product
+  }
 }
 </script>
 

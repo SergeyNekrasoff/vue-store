@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-import Card from '@/views/Card'
 import Cart from '@/views/Cart'
 import Checkout from '@/views/Checkout'
 import Contacts from '@/views/Contacts'
@@ -17,27 +16,22 @@ export default new Router({
       component: Home
     },
     {
-      path: '/',
+      path: '/cart',
       name: 'Cart',
       component: Cart
     },
     {
-      path: '/',
+      path: '/payment',
       name: 'Checkout',
       component: Checkout
     },
     {
-      path: '/',
-      name: 'Card',
-      component: Card
-    },
-    {
-      path: '/',
+      path: '/contacts',
       name: 'Contacts',
       component: Contacts
     },
     {
-      path: '/',
+      path: '/shipping',
       name: 'Shipping',
       component: Shipping
     }
