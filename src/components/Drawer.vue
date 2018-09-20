@@ -19,12 +19,14 @@
                   <!-- Cart vidget -->
                     <v-layout align-center justify-end row>
                         <v-flex text-xs-right>
-                            <v-btn flat small class="btn btn--cart">
-                                <span class="product-counter">
-                                    2
-                                </span>
-                                <v-icon>mdi-cart-outline</v-icon>
-                            </v-btn>
+                          <v-btn flat small>
+                              <router-link to="/cart" class="nav-link">
+                                  <span v-if="getLength" class="product-counter">
+                                      {{ getLength }}
+                                  </span>
+                                  <v-icon>mdi-cart-outline</v-icon>
+                              </router-link>
+                          </v-btn>
                         </v-flex>
                     </v-layout>
                 </v-flex>
@@ -58,6 +60,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data: () => {
       return ({
@@ -86,11 +90,18 @@ export default {
               }
           ]
       })
+  },
+  computed: {
+    ...mapGetters({
+      getLength: 'getProductsLength'
+    })
   }
 }
 </script>
 
 <style lang="scss">
+@import '../assets/theme.scss';
+
 .drawer {
   &__logo {
     width: 120px;

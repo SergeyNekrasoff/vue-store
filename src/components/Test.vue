@@ -6,7 +6,7 @@
       <div class="product__details">
         <p>{{ item.name }}</p>
         <p>{{ item.price }}</p>
-        <v-btn outline large class="btn-add" @click="addItem(item)">
+        <v-btn outline large class="btn-add" @click="addToCart(item)">
             <span>В корзину</span>
             <v-icon>mdi-plus</v-icon>
         </v-btn>
@@ -47,7 +47,6 @@ export default {
         top: 0;
     }
 }
-
 .wrap-img {
     position: relative;
     margin-top: 148px;

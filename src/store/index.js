@@ -4,44 +4,46 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state: {
-        cartTotal: 0,
-        cart: {},
-        products: [
-            {
-                name: 'Bozlun Smart Watches',
-                price: '4480р.',
-                img: 'preview2.png',
-                discount: '35%',
-                id: 0
-            }
-        ]
-    },
-    getters: {
-        getProducts: state => state.products
-    },
-    mutations: {
-      addItem: (state, item) => {
-        state.cartTotal++
-
-        if (item.name in state.cart) {
-            state.cart[item.name].count++
-        } else {
-            let stateItem = Object.assign({}, item)
-            stateItem.count = 1
-            state.cart[item.name] = stateItem
-        }
-      },
-      clearCartItems: (state) => {
-        state.cart = {}
-      },
-      clearCartTotal: (state) => {
-        state.cartTotal = 0
+  state: {
+    cartStatus: null,
+    cart: [],
+    products: [
+      {
+        name: 'Bozlun Smart Watches',
+        price: '4480р.',
+        img: 'preview2.png',
+        discount: '35%',
+        id: 0
       }
+    ]
+  },
+  getters: {
+    getProducts: state => state.products,
+    getProductsLength: state => state.cart.length
+  },
+  mutations: {
+    addItem: (state, { id }) => {
+      state.cart.push({
+        id,
+        qty: 1
+      })
+    },
+    incrementItemQty: (state, { id }) => {
+      const cartItem = state.cart.find(item => item.id === id)
+      cartItem.qty++
+    },
+    decrementItemQty: (state, { id }) => {
+      const cartItem = state.cart.find(item => item.id === id)
+      cartItem.qty--
+    },
+    setCheckoutStatus: (state, status) => {
+      state.cartStatus = status
     }
-    // actions: {
-    //   addToCart: ({ commit }) => {
-    //     commit('addItem', item)
-    //   }
-    // }
+  },
+  actions: {
+    addToCart: ({ commit }, item) => {
+      // const savedCartItems = [...state.cart]
+      commit('addItem', { id: item.id })
+    }
+  }
 })
