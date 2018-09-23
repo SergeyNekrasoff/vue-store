@@ -5,28 +5,42 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    cartStatus: null,
-    cart: [],
+    cart: {
+      stock: [],
+      total: 0
+    },
     products: [
       {
         name: 'Bozlun Smart Watches',
-        price: '4480р.',
+        price: '4480',
         img: 'preview2.png',
-        discount: '35%',
+        discount: '35',
         id: 0
       }
     ]
   },
   getters: {
     getProducts: state => state.products,
-    getProductsLength: state => state.cart.length
+    getTotal: state => state.cart.total,
+    getStock: state => state.cart.stock
   },
   mutations: {
-    addItem: (state, { id }) => {
-      state.cart.push({
-        id,
-        qty: 1
-      })
+    addItem: (state, { item }) => {
+      state.cart.total++
+      state.cart.stock.push(item)
+      // for (let i = 0, cartStock = state.cart.stock; i < cartStock.length; i++) {
+      //   const cartItem = cartStock[i]
+      //   if (cartItem.id === item.id) {
+      //     // console.log(`true`)
+      //       state.cart.stock[cartItem].qty++
+      //   } else if () {
+      //     console.log(`true`)
+      //       state.cart.stock[item].qty = 1
+      //       state.cart.stock.push(item)
+      //   } else {
+      //       state.cart.stock.push(item)
+      //   }
+      // }
     },
     incrementItemQty: (state, { id }) => {
       const cartItem = state.cart.find(item => item.id === id)
@@ -35,15 +49,11 @@ export default new Vuex.Store({
     decrementItemQty: (state, { id }) => {
       const cartItem = state.cart.find(item => item.id === id)
       cartItem.qty--
-    },
-    setCheckoutStatus: (state, status) => {
-      state.cartStatus = status
     }
   },
   actions: {
-    addToCart: ({ commit }, item) => {
-      // const savedCartItems = [...state.cart]
-      commit('addItem', { id: item.id })
+    addToCart: ({ commit, getters }, item) => {
+      commit('addItem', { item })
     }
   }
 })

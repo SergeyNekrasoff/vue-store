@@ -21,8 +21,8 @@
                         <v-flex text-xs-right>
                           <v-btn flat small>
                               <router-link to="/cart" class="nav-link">
-                                  <span v-if="getLength" class="product-counter">
-                                      {{ getLength }}
+                                  <span v-if="getTotal" class="product-counter">
+                                      {{ getTotal }}
                                   </span>
                                   <v-icon>mdi-cart-outline</v-icon>
                               </router-link>
@@ -93,7 +93,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getLength: 'getProductsLength'
+      getTotal: 'getTotal'
     })
   }
 }

@@ -16,6 +16,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+// import { mapMutations } from 'vuex'
 
 export default {
     props: {
@@ -32,6 +33,12 @@ export default {
       ...mapActions([
         'addToCart'
       ])
+      // ...mapMutations([
+      //   'addItem'
+      // ])
+      // addItem (item) {
+      //   this.$store.commit('addItem', { item })
+      // }
     }
 }
 </script>

@@ -2,12 +2,12 @@
   <div>
     <!-- <Product /> -->
     <div class="products-list">
-      <div is="TestItem"
+      <TestItem
         v-for="(item, index) in products"
         :key="index"
         :item="item"
         :index="index"
-      ></div>
+      />
     </div>
   </div>
 </template>
