@@ -1,12 +1,10 @@
 <template>
-  <div id="app">
-    <v-app>
-      <v-content>
-        <Drawer />
-        <router-view/>
-      </v-content>
+    <v-app id="app">
+        <v-content>
+            <Drawer />
+            <router-view/>
+        </v-content>
     </v-app>
-  </div>
 </template>
 
 <script>
@@ -21,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../node_modules/normalize-scss/sass/_normalize";
+@import "assets/theme";
 
 #app {
   /*background: #909090;*/

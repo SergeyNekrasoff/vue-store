@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="cart">
         <v-container pa-2>
             <v-layout align-start justify-space-between row wrap>
                 <v-flex xs8>
@@ -10,7 +10,7 @@
                                     <h1 class="font-weight-medium display-3">Моя корзина</h1>
                                     <span class="caption">
                                       <v-icon>mdi-lock</v-icon>
-                                      безопасная сделка
+                                      безопасная оплата
                                     </span>
                                 </v-flex>
                                 <v-flex>
@@ -18,88 +18,86 @@
                                 </v-flex>
                             </v-layout>
                         </v-flex>
-                        <v-flex>
-                            <div class="content__card card">
-                                <div class="card__header">
+                        <v-flex v-if="getTotal">
+                            <div class="cart__control">
+                                <div class="header">
                                     <v-icon>mdi-alert-circle</v-icon>
                                     <p class="body-1">Ваш товар будет отправлен в день заказа</p>
                                 </div>
-                                <v-layout justify-space-between row>
-                                    <v-flex>
-                                        <!-- <img :src="`../static/${item.img}`" :alt="`Так выглядят ${item.img}`"> -->
-                                    </v-flex>
-                                    <v-flex>
-                                        <v-layout>
+                                <div
+                                  v-for="(item, index) in items"
+                                  :key="index"
+                                  class="items"
+                                >
+                                    <v-layout justify-space-between row>
+                                        <v-flex>
+                                          <!-- <img :src="`../static/${item.img}`" :alt="`Так выглядят ${item.img}`"> -->
+                                        </v-flex>
+                                        <v-flex>
+                                          <v-layout>
                                             <v-flex>
-                                                <p class="text-truncate">
-                                                  <!-- {{ item.name }} -->
-                                                </p>
+                                              <p class="text-truncate">
+                                                {{ item.name }}
+                                              </p>
                                             </v-flex>
                                             <v-flex>
-                                                <v-layout justify-space-between row>
-                                                    <v-flex>
-                                                        <v-btn outline>Убрать</v-btn>
-                                                        <v-btn outline><v-icon>mdi-minus</v-icon></v-btn>
-                                                        <span>
-                                                          3
-                                                          <!-- {{ getLength }} -->
-                                                        </span>
-                                                        <v-btn outline><v-icon>mdi-plus</v-icon></v-btn>
-                                                    </v-flex>
-                                                    <v-flex>
-                                                        <p>
-                                                          $747
-                                                          <!-- {{ getTotal }} -->
-                                                        </p>
-                                                    </v-flex>
-                                                </v-layout>
+                                              <v-layout justify-space-between row>
+                                                <v-flex>
+                                                  <v-btn outline @click="clearCart()">Убрать</v-btn>
+                                                  <v-btn outline @click="removeItem(item)"><v-icon>mdi-minus</v-icon></v-btn>
+                                                  <span>{{ item.qty }}</span>
+                                                  <v-btn outline @click="addItem(item)"><v-icon>mdi-plus</v-icon></v-btn>
+                                                </v-flex>
+                                                <v-flex>
+                                                  <p>{{ item.price }}</p>
+                                                </v-flex>
+                                              </v-layout>
                                             </v-flex>
-                                        </v-layout>
-                                    </v-flex>
-                                </v-layout>
+                                          </v-layout>
+                                        </v-flex>
+                                    </v-layout>
+                                </div>
                             </div>
                         </v-flex>
-                      <v-flex></v-flex>
-                      <v-flex></v-flex>
+                        <v-flex v-else>
+                            У вас пока нет товаров
+                        </v-flex>
                     </v-layout>
                 </v-flex>
-                <v-flex xs4>
-                    <v-layout align-start column>
-                        <v-flex>
-                            <div class="check-order">
-                                <h2 class="font-weight-regular display-1">Всео к оплате</h2>
-                                <ul class="check-order__list">
-                                  <li>
-                                      <span>Цена</span>
-                                      <span>
-                                        $747
-                                        <!-- {{ item.price }} -->
-                                      </span>
-                                  </li>
-                                  <li>
-                                      <span>Доставка</span>
-                                      <span>Бесплатно</span>
-                                  </li>
-                                  <li>
-                                      <span>Итого</span>
-                                      <span>
-                                          $1594
-                                          <!-- {{ item.total }} -->
-                                      </span>
-                                  </li>
+                <v-flex v-if="getTotal" xs4>
+                    <!-- <v-layout align-start column> -->
+                        <!-- <v-flex> -->
+                            <div class="cart__order">
+                                <h2 class="font-weight-regular display-1">Сумма заказа</h2>
+                                <ul class="cart__order-list">
+                                    <li>
+                                        <span>Цена</span>
+                                        <span>{{ getTotalPrice }} <v-icon>mdi-currency-rub</v-icon></span>
+                                    </li>
+                                    <li>
+                                        <span>Доставка</span>
+                                        <span>Бесплатно</span>
+                                    </li>
+                                    <li>
+                                        <b>К оплате</b>
+                                        <b>
+                                          {{ getTotalPrice }}
+                                          <v-icon>mdi-currency-rub</v-icon>
+                                        </b>
+                                    </li>
                                 </ul>
-                                <v-btn large>Купить</v-btn>
+                                <v-btn large>К оплате</v-btn>
                             </div>
-                        </v-flex>
-                        <v-flex>
-                            <div class="promocode">
-                              <v-text-field
-                                label="Введите промо-код"
-                              ></v-text-field>
-                              <v-btn>Применить</v-btn>
-                            </div>
-                        </v-flex>
-                    </v-layout>
+                        <!-- </v-flex> -->
+                      <!-- <v-flex>
+                        <div class="cart__promo">
+                          <v-text-field
+                          label="Введите промо-код"
+                          ></v-text-field>
+                          <v-btn>Применить</v-btn>
+                        </div>
+                      </v-flex> -->
+                    <!-- </v-layout> -->
                 </v-flex>
             </v-layout>
         </v-container>
@@ -108,9 +106,23 @@
 
 <script>
 // import Product from '@/components/Product'
-// import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters({
+      items: 'getStock',
+      getTotal: 'getTotal',
+      getTotalPrice: 'getTotalPrice'
+    })
+  },
+  methods: {
+    ...mapActions([
+      'addItem',
+      'removeItem',
+      'clearCart'
+    ])
+  }
 }
 </script>
 

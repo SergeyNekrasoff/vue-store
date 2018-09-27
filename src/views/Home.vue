@@ -1,8 +1,7 @@
 <template>
   <div>
-    <!-- <Product /> -->
     <div class="products-list">
-      <TestItem
+      <Product
         v-for="(item, index) in products"
         :key="index"
         :item="item"
@@ -13,14 +12,12 @@
 </template>
 
 <script>
-// import Product from '@/components/Product'
-import TestItem from '@/components/Test'
+import Product from '@/components/Product'
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    // Product,
-    TestItem
+    Product
   },
   computed: {
     ...mapGetters({

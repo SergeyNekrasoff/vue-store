@@ -2,31 +2,35 @@
     <header class="drawer">
         <v-container pa-2>
             <v-layout align-center justify-space-between row>
-                <v-flex xs2>
+                <v-flex xs6>
                     <v-layout align-center justify-start row>
-                        <v-flex>
-                            <v-btn flat small @click.stop="menu = !menu">
+                        <v-flex xs2>
+                            <v-btn flat small class="btn-menu">
                                 <v-icon>mdi-menu</v-icon>
                             </v-btn>
                         </v-flex>
-                        <v-flex>
-                            <img class="drawer__logo" src="../../static/logo-main.png" alt="">
+                        <v-flex xs3>
+                            <router-link to="/" class="nav-link">
+                                <img class="drawer__logo text-left" src="../../static/logo-main.png" alt="">
+                            </router-link>
                         </v-flex>
                     </v-layout>
                 </v-flex>
-                <v-spacer></v-spacer>
-                <v-flex>
-                  <!-- Cart vidget -->
+                <v-flex xs6>
                     <v-layout align-center justify-end row>
-                        <v-flex text-xs-right>
-                          <v-btn flat small>
-                              <router-link to="/cart" class="nav-link">
-                                  <span v-if="getTotal" class="product-counter">
-                                      {{ getTotal }}
-                                  </span>
-                                  <v-icon>mdi-cart-outline</v-icon>
-                              </router-link>
-                          </v-btn>
+                        <v-flex v-if="getTotalPrice" xs1>
+                              <span>
+                                  {{ getTotalPrice }}
+                                  <v-icon class="text text--rub">mdi-currency-rub</v-icon>
+                              </span>
+                        </v-flex>
+                        <v-flex xs1>
+                          <div v-if="getTotal">
+                            <router-link to="/cart" class="nav-link drawer__counter">
+                              {{ getTotal }}
+                            </router-link>
+                          </div>
+                          <div v-else class="drawer__counter">0</div>
                         </v-flex>
                     </v-layout>
                 </v-flex>
@@ -93,41 +97,34 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getTotal: 'getTotal'
+      getTotal: 'getTotal',
+      getTotalPrice: 'getTotalPrice'
     })
   }
 }
 </script>
 
 <style lang="scss">
-@import '../assets/theme.scss';
-
 .drawer {
   &__logo {
     width: 120px;
+    margin-top: 6px;
   }
-}
 
-.promo-spot {
-  background: #2c17fa;
-  color: #fff;
+  &__counter {
+    font-size: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2c17fa;
+    line-height: 28px;
+    margin-left: 8px;
+    display: block;
+    color: #fff;
+  }
 }
 
 .navigation {
   background: #fff;
-}
-
-.product-counter {
-  border: 1px solid #fff;
-  font-size: 10px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #2c17fa;
-  line-height: 16px;
-  color: #fff;
-  position: absolute;
-  right: 15px;
-  top: -6px;
 }
 </style>

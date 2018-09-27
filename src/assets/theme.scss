@@ -1,11 +1,64 @@
-$blue: #2c17fa;
-$grey: #eae8ee;
-$dgrey: #909090;
-$black: #2d2d2d;
-$dblack: #202020;
-$light: #c6c6c6;
+@import "lib/normalize";
+@import "_common";
+@import "_variables";
+@import "_fonts";
+
+// Typography
+.text {
+    margin: 0;
+
+    &--blue {
+        color: $blue;
+    }
+
+    &--light {
+        color: $light;
+    }
+
+    &--dgrey {
+        color: $dgrey;
+    }
+
+    &--grey {
+        color: $grey;
+    }
+
+    &--dblack {
+        color: $dblack;
+    }
+
+    &--black {
+        color: $black;
+    }
+
+    &--rub {
+        margin-bottom: 6px;
+
+        &:before {
+          font-size: 20px;
+          margin-left: -12px;
+          color: $dblack;
+        }
+    }
+
+    &--rub-smooth {
+        &:before {
+          font-size: 20px;
+          margin-left: -12px;
+          color: $dgrey;
+        }
+    }
+}
 
 .nav-link {
-  color: $black;
-  text-decoration: none;
+    color: $black;
+    text-decoration: none;
+}
+
+.nav-btn {
+    margin-right: 36px;
+}
+
+.btn-menu {
+    min-width: 50px;
 }
