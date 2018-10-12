@@ -6,6 +6,8 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
 
+export const eventBus = new Vue()
+
 // Helpers
 // import colors from 'vuetify/es5/util/colors'
 

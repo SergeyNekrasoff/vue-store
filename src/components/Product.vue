@@ -9,14 +9,14 @@
                   <v-flex xs4 lg3 xl4 pr-4>
                       <v-layout align-end justify-end column>
                           <v-flex mb-5>
-                              <p class="font-weight-bold display-2 text text-xs-right text--blue">-{{ item.discount }}%</p>
+                              <p class="font-weight-bold display-3 text text-xs-right text--blue">&mdash; {{ item.discount }}%</p>
                           </v-flex>
                           <v-flex mt-5 mb-5>
                               <p class="font-weight-light display-1 text text-xs-right">Smart Watches</p>
                           </v-flex>
                       </v-layout>
                   </v-flex>
-                  <v-flex xs3 lg5 xl2></v-flex>
+                  <v-flex xs3 lg5 xl3></v-flex>
                   <v-flex xs4 lg3 xl4 pl-4>
                       <v-layout align-start justify-start column>
                           <v-flex mb-5>
@@ -35,8 +35,8 @@
                           </v-flex>
                           <v-flex mt-5>
                               <v-btn outline large class="btn-add" @click="addItemToCart(item)">
-                                  <span>В корзину</span>
-                                  <v-icon>mdi-plus</v-icon>
+                                  <span class="font-weight-medium title btn-add__text text--blue">в корзину</span>
+                                  <v-icon normal>mdi-plus</v-icon>
                               </v-btn>
                           </v-flex>
                       </v-layout>
@@ -79,7 +79,7 @@ export default {
         position: absolute;
         left: 0;
         right: 0;
-        top: 30px;
+        top: 45px;
         z-index: 1;
     }
 
@@ -107,6 +107,18 @@ export default {
         }
 
         s { margin-right: 6px; }
+    }
+
+    .btn-add {
+        margin-left: 0;
+
+        &__text {
+            padding-right: 12px;
+        }
+
+        i:before {
+          color: $blue;
+        }
     }
 }
 .wrap-img {

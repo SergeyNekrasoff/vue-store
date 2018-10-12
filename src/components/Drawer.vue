@@ -5,7 +5,7 @@
                 <v-flex xs6>
                     <v-layout align-center justify-start row>
                         <v-flex xs2>
-                            <v-btn flat small class="btn-menu">
+                            <v-btn flat small class="btn-menu" @click.native="show">
                                 <v-icon>mdi-menu</v-icon>
                             </v-btn>
                         </v-flex>
@@ -18,8 +18,8 @@
                 </v-flex>
                 <v-flex xs6>
                     <v-layout align-center justify-end row>
-                        <v-flex v-if="getTotalPrice" xs1>
-                              <span>
+                        <v-flex class="drawer__total-price" v-if="getTotalPrice" xs2 pr-1>
+                              <span class="font-weight-bold body-2">
                                   {{ getTotalPrice }}
                                   <v-icon class="text text--rub">mdi-currency-rub</v-icon>
                               </span>
@@ -35,42 +35,17 @@
                     </v-layout>
                 </v-flex>
             </v-layout>
-            <v-layout>
-                <!-- Navigation -->
-                <v-navigation-drawer v-model="menu" absolute temporary class="navigation" width="400">
-                    <nav class="navigation-bar">
-                        <ul class="navigation-bar__list">
-                            <li v-for="link in links" :key="link.id">
-                                <router-link v-bind:key="link.id" :to="`${link.path}`">
-                                  {{ link.label }}
-                                </router-link>
-                            </li>
-                            <li>
-                                <a @click="policyModal = true">Политика конфиденциальности</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </v-navigation-drawer>
-
-                <!-- Modals -->
-                <v-dialog v-model="policyModal" fullscreen lazy hide-overlay transition="slide-x-transition">
-                    Test
-                    <v-spacer></v-spacer>
-                    <v-btn color="primary" flat @click="policyModal = false">I accept</v-btn>
-                </v-dialog>
-            </v-layout>
         </v-container>
     </header>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { eventBus } from '@/main'
 
 export default {
   data: () => {
       return ({
-          policyModal: false,
-          menu: false,
           links: [
               {
                   id: 0,
@@ -96,35 +71,53 @@ export default {
       })
   },
   computed: {
-    ...mapGetters({
-      getTotal: 'getTotal',
-      getTotalPrice: 'getTotalPrice'
-    })
+      ...mapGetters({
+          getTotal: 'getTotal',
+          getTotalPrice: 'getTotalPrice'
+      })
+  },
+  methods: {
+      show: function () {
+          eventBus.$emit('open', true)
+      }
   }
 }
 </script>
 
 <style lang="scss">
 .drawer {
-  &__logo {
-    width: 120px;
-    margin-top: 6px;
-  }
+    &__logo {
+        width: 120px;
+        margin-top: 6px;
+    }
 
-  &__counter {
-    font-size: 12px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #2c17fa;
-    line-height: 28px;
-    margin-left: 8px;
-    display: block;
-    color: #fff;
-  }
+    &__counter {
+        font-size: 12px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #2c17fa;
+        line-height: 28px;
+        margin-left: 8px;
+        display: block;
+        color: #fff;
+    }
+
+    &__total-price {
+        text-align: right;
+
+        .text--rub {
+            margin: 0;
+
+            &:before {
+                font-size: 12px;
+                margin-left: -4px;
+            }
+        }
+    }
 }
 
 .navigation {
-  background: #fff;
+    background: #fff;
 }
 </style>
