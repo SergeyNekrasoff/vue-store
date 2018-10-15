@@ -47,7 +47,7 @@ export default {
 
 #app {
   /*background: #909090;*/
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -64,6 +64,7 @@ export default {
         border-radius: 0;
         background: $white;
         margin: 8px;
+        max-height: 95%;
     }
 }
 </style>

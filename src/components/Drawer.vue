@@ -11,7 +11,7 @@
                         </v-flex>
                         <v-flex xs3>
                             <router-link to="/" class="nav-link">
-                                <img class="drawer__logo text-left" src="../../static/logo-main.png" alt="">
+                                <img class="drawer__logo text-left" src="../../static/logo-main.png" alt="Bozlun логотип">
                             </router-link>
                         </v-flex>
                     </v-layout>
@@ -84,7 +84,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .drawer {
     &__logo {
         width: 120px;

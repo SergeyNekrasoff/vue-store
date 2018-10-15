@@ -3,6 +3,12 @@
 @import "_variables";
 @import "_fonts";
 
+// Grid
+.skin {
+    max-width: 84rem;
+    min-width: 50rem;
+}
+
 // Typography
 .text {
     margin: 0;
@@ -53,6 +59,34 @@
 .nav-link {
     color: $black;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    &--decor {
+        display: inline-block;
+        line-height: 1.2;
+
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+          transition: transform .5s ease;
+        }
+
+        &:before {
+          left: 0;
+          bottom: 1px;
+          width: 100%;
+          height: 1px;
+          background: $dgrey;
+          transform:  translateX(-105%);
+        }
+
+        &:hover:before {
+          transform:  translateX(0);
+        }
+    }
+
 }
 
 .nav-btn {
@@ -61,4 +95,10 @@
 
 .btn-menu {
     min-width: 50px;
+}
+
+.btn-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
 }
