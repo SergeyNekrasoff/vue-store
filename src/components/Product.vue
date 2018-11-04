@@ -1,7 +1,7 @@
 <template>
     <div class="product">
       <div class="wrap-img">
-        <img :src="`../static/${item.img}`" :alt="`Так выглядят ${item.name}`">
+        <img :src="`static/${item.img}`" :alt="`Так выглядят ${item.name}`">
       </div>
       <div class="product__details">
           <v-container pa-3>

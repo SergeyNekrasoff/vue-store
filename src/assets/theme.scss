@@ -2,11 +2,13 @@
 @import "_common";
 @import "_variables";
 @import "_fonts";
+@import "_mixins";
 
 // Grid
 .skin {
     max-width: 84rem;
     min-width: 50rem;
+    margin: 0 auto;
 }
 
 // Typography
@@ -93,12 +95,133 @@
     margin-right: 36px;
 }
 
+
+//Buttons
 .btn-menu {
     min-width: 50px;
+}
+
+.btn-reduce,
+.btn-add {
+    min-width: 40px;
+    border: 1px solid $light;
+}
+
+.btn-reduce {
+    margin-right: 8px;
+    margin-left: 16px;
+}
+
+.btn-add {
+    margin-left: 8px;
+}
+
+.btn-clear {
+    background: $grey;
+    border: 1px solid $light;
+}
+
+.btn-order {
+    background-color: $black !important;
+    color: #fff;
+}
+
+.btn-apply-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    top: -3px;
+    min-width: 40px;
 }
 
 .btn-close {
     position: absolute;
     top: 20px;
     right: 24px;
+}
+
+//cart and checkout
+.order {
+  border: 1px solid $light;
+  background: $checkout;
+  margin-bottom: 24px;
+
+  &__list {
+    margin-top: 8px;
+
+    li {
+      margin: 4px auto;
+      @include justify;
+    }
+
+    .summary {
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.payment-banks {
+  margin-top: 20px;
+
+  &__list {
+    text-align: center;
+  }
+
+  &__li {
+    border: 1px solid rgba(0,0,0, .2);
+    border-radius: 2px;
+    height: 26px;
+    width: 42px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+
+  .visa {
+    background: url('/static/visa.svg'), #f1f1f1;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;;
+  }
+  .mastercard {
+    background: url('/static/mcard.svg'), #f1f1f1;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .maestro {
+    background: url('/static/maestro.svg'), #f1f1f1;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .alfa {
+    background: url('/static/alfa.svg'), #f1f1f1;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;;
+  }
+  .sber {
+    background: url('/static/sber.svg'), #f1f1f1;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;;
+  }
+}
+
+//Forms
+form {
+  .form-group {
+    border-bottom: 2px solid $black;
+  }
+
+  .accent--text {
+    color: $black !important;
+  }
+
+  .v-radio .v-icon {
+    font-size: 16px !important;
+  }
 }

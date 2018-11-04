@@ -4,14 +4,14 @@
             <v-layout align-center justify-space-between row>
                 <v-flex xs6>
                     <v-layout align-center justify-start row>
-                        <v-flex xs2>
+                        <v-flex xs2 lg2>
                             <v-btn flat small class="btn-menu" @click.native="show">
                                 <v-icon>mdi-menu</v-icon>
                             </v-btn>
                         </v-flex>
-                        <v-flex xs3>
+                        <v-flex xs3 lg2>
                             <router-link to="/" class="nav-link">
-                                <img class="drawer__logo text-left" src="../../static/logo-main.png" alt="Bozlun логотип">
+                                <img class="drawer__logo text-left" src="static/logo-main.png" alt="Bozlun логотип">
                             </router-link>
                         </v-flex>
                     </v-layout>

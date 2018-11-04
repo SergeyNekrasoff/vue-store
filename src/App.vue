@@ -6,11 +6,11 @@
         </v-content>
         <v-container>
             <v-layout>
-              <Modal
-                  class="navigation"
-                  :visible="menu"
-                  @close="menu = false"
-              />
+                <Modal
+                    class="navigation"
+                    :visible="menu"
+                    @close="menu = false"
+                />
             </v-layout>
         </v-container>
     </v-app>
