@@ -1,6 +1,6 @@
 # vue-store
 
-> Template Market-place Project
+> Boilerplate Marketplace Project
 
 ## Build Setup
 
