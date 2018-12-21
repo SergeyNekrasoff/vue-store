@@ -9,10 +9,10 @@
                   <v-flex xs4 lg3 xl4 pr-4>
                       <v-layout align-end justify-end column>
                           <v-flex mb-5>
-                              <p class="font-weight-bold display-3 text text-xs-right text--blue">&mdash; {{ item.discount }}%</p>
+                              <p class="font-weight-medium display-2 text text-xs-right text--blue">&mdash; {{ item.discount }}%</p>
                           </v-flex>
                           <v-flex mt-5 mb-5>
-                              <p class="font-weight-light display-1 text text-xs-right">Smart Watches</p>
+                              <p class="font-weight-light body text text-xs-right">description __ description __ description __ description __ description __ description __ description</p>
                           </v-flex>
                       </v-layout>
                   </v-flex>
@@ -21,22 +21,17 @@
                       <v-layout align-start justify-start column>
                           <v-flex mb-5>
                               <p class="font-weight-bold display-2 text text-xs-left">{{ item.name }}</p>
-                              <p class="font-weight-regular title text text-xs-left">Smart Sport</p>
+                              <p class="font-weight-light body text text-xs-left">offer -- offer -- offer -- offer -- offer -- offer -- offer</p>
                           </v-flex>
                           <v-flex mt-5 mb-5>
-                              <span class="product__price font-weight-bold display-2 text text-xs-left text--blue">
+                              <span class="product__price font-weight-medium display-2 text text-xs-left text--blue">
                                   {{ item.price }}
                                   <v-icon class="text text--rub text--blue">mdi-currency-rub</v-icon>
-                              </span>
-                              <span class="product__price product__price--old font-weight-thin display-1 text text--dgrey">
-                                  <s>5040</s>
-                                  <v-icon class="text text--rub text--rub-smooth">mdi-currency-rub</v-icon>
                               </span>
                           </v-flex>
                           <v-flex mt-5>
                               <v-btn outline large class="btn-add" @click="addItemToCart(item)">
-                                  <span class="font-weight-medium title btn-add__text text--blue">в корзину</span>
-                                  <v-icon normal>mdi-plus</v-icon>
+                                  <span class="font-weight-medium title btn-add__text text--blue">CTA</span>
                               </v-btn>
                           </v-flex>
                       </v-layout>
@@ -123,11 +118,13 @@ export default {
 }
 .wrap-img {
     position: relative;
-    margin-top: 148px;
+    margin-top: 150px;
 
     &:before {
         content: '';
         position: absolute;
+        // border: 1px solid $grey;
+        box-shadow: inset 0px 15px 12px -13px rgba(3, 3, 3, 0.5);
         top: 50%;
         left: 50%;
         bottom: 0;
@@ -135,7 +132,7 @@ export default {
         border-radius: 50%;
         width: 750px;
         height: 750px;
-        background: #fff;
+        background: $checkout;
         margin-left: -375px;
         margin-top: -375px;
     }

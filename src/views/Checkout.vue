@@ -1,8 +1,8 @@
 <template>
     <div class="checkout">
-        <v-container pa-4 class="skin checkout__inner">
+        <v-container pa-4 class="checkout__inner">
             <v-layout align-start justify-space-between row wrap>
-                <v-flex xs12>
+                <v-flex xs8 pr-4>
                     <v-layout align-start justify-space-between row wrap text-xs-left>
                         <v-form
                                 class="form-checkout"
@@ -135,7 +135,7 @@
                                                         ></v-radio>
                                                     </span>
                                                     <span class="shipping-price">
-                                                        0
+                                                        бесплатно
                                                     </span>
                                                 </li>
                                                 <v-divider></v-divider>
@@ -143,7 +143,7 @@
                                                     <span>
                                                         <v-radio
                                                                 class="input-ratio"
-                                                                label="Почта России | 2 - 3 дн. | курьер"
+                                                                label="EMS | 2 - 3 дн."
                                                                 value="paid"></v-radio>
                                                     </span>
                                                     <span class="shipping-price">
@@ -154,6 +154,14 @@
                                         </v-radio-group>
                                     </v-flex>
                                     <v-flex xs6>
+                                        <v-flex>
+                                            <iframe
+                                                frameborder="0"
+                                                allowtransparency="true"
+                                                scrolling="no"
+                                                src="https://intellectmoney.ru/ru/enter/acceptpay/userPaymentForm/?route[UserPaymentForm]=Form/Get&FormId=1716&FormType=IMAccount&AccountId=1267192814&PaymentWriter=Seller&PaymentName=%CE%EF%EB%E0%F2%E0%20%EF%F0%EE%E4%F3%EA%F6%E8%E8&PaymentTip=&Amount=&ButtonName=Pay&IsCommentField=&CommentName=%CA%EE%EC%EC%E5%ED%F2%E0%F0%E8%E9&CommentTip=&IsFIOField=1&IsEmailField=1&IsPhoneField=1&SuccessUrl=" width="460" height="297">
+                                            </iframe>
+                                        </v-flex>
                                         <v-checkbox v-model="policy">
                                             <span class="caption" slot="label">
                                                 Согласен(-на) на обработку персональных данных
@@ -178,6 +186,33 @@
                                 <p class="caption" v-if="submitStatus === 'PENDING'">Sending...</p>
                             </v-flex>
                         </v-form>
+                    </v-layout>
+                </v-flex>
+                <v-flex xs4 text-xs-left>
+                    <v-layout column>
+                        <v-flex class="order" px-4 py-2 text-xs-left>
+                              <ul class="order__list">
+                                  <li>
+                                      <span class="font-weight-regular body-2">Цена</span>
+                                      <span class="font-weight-regular body-2">{{ getTotalPrice }}</span>
+                                  </li>
+                                  <v-divider></v-divider>
+                                  <li>
+                                      <span class="font-weight-regular body-2">Доставка</span>
+                                      <span class="font-weight-regular body-2">Бесплатно</span>
+                                  </li>
+                                  <v-divider></v-divider>
+                                  <li>
+                                      <span class="font-weight-regular body-2">НДС</span>
+                                      <span class="font-weight-regular body-2">0</span>
+                                  </li>
+                                  <v-divider></v-divider>
+                                  <li class="summary">
+                                      <span class="font-weight-medium subheading text-xs-center">К оплате</span>
+                                      <span class="font-weight-medium subheading text-xs-center">{{ getTotalPrice }}</span>
+                                  </li>
+                              </ul>
+                        </v-flex>
                     </v-layout>
                 </v-flex>
             </v-layout>
@@ -301,10 +336,6 @@ export default {
 
 .checkout {
     padding-top: 50px;
-
-    &__inner {
-        background: $checkout;
-    }
 
     .form-checkout {
         width: 100%;

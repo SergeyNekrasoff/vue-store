@@ -1,6 +1,6 @@
 <template>
     <div class="cart">
-        <v-container pa-2 class="skin">
+        <v-container pa-2>
             <v-layout v-if="getTotal" align-start justify-space-between row wrap>
                 <v-flex xs8 text-xs-left pr-4>
                     <v-layout column>

@@ -1,18 +1,18 @@
 <template>
     <v-app id="app">
+        <Drawer @click.prevent="showMenu()"></Drawer>
         <v-content>
-            <Drawer @click.prevent="showMenu()" />
-            <router-view/>
-        </v-content>
-        <v-container>
-            <v-layout>
+            <v-container>
+                <router-view/>
                 <Modal
                     class="navigation"
                     :visible="menu"
                     @close="menu = false"
                 />
-            </v-layout>
-        </v-container>
+            </v-container>
+            <!-- <v-layout> -->
+            <!-- </v-layout> -->
+        </v-content>
     </v-app>
 </template>
 
@@ -54,7 +54,7 @@ export default {
   color: #2c3e50;
 }
 .application.theme--light {
-    background: #eae8ee;
+    background: #fff;
 
     .v-dialog__content {
         align-items: flex-start;

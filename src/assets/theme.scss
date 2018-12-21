@@ -4,11 +4,22 @@
 @import "_fonts";
 @import "_mixins";
 
-// Grid
-.skin {
-    max-width: 84rem;
-    min-width: 50rem;
-    margin: 0 auto;
+@media only screen and (min-width: 960px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media only screen and (min-width: 1264px) {
+    .container {
+        max-width: 1180px;
+    }
+}
+
+@media only screen and (min-width: 1904px) {
+    .container {
+        max-width: 1440px;
+    }
 }
 
 // Typography
@@ -88,7 +99,6 @@
           transform:  translateX(0);
         }
     }
-
 }
 
 .nav-btn {
@@ -150,7 +160,7 @@
     margin-top: 8px;
 
     li {
-      margin: 4px auto;
+      margin: 12px auto 0;
       @include justify;
     }
 
